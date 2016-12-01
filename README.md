@@ -5,18 +5,18 @@ Un traductor de lenguaje a Markdown
 
 
 ###Titulos
-  #1 (texto)  #1 -> Titulo principal
-  #(numero)  (text)  #(numero)
+\#1 (texto)  \#1 -> Titulo principal
+\#(numero)  (text)  \#(numero)
 
 
 ###Negrita
-  @(texto)@
+@(texto)@
 
 
 ###Cursiva
-  &(texto)&
+&(texto)&
 
 
 ###Codigo
-  /code (texto) /code -> linea de codigo
-  /codeblock (parrafo) /codeblock -> bloque de codigo
+/code (texto) /code -> linea de codigo
+/codeblock (parrafo) /codeblock -> bloque de codigo
