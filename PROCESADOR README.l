@@ -3,17 +3,19 @@
 %{
 #include <stdio.h>
 
-			
+FILE *readme;
+%}
+
 %%			/*----- Sección de Reglas ----------------*/
 
-\#|\@|\&|"/code"|"/codeblock"			{BEGIN FORMAT;}
-[^\#|\@|\&|"/code"|"/codeblock"]+			{}
+\#|\@|\&|"/code"|"/codeblock"											{BEGIN FORMAT;}
+[^\#|\@|\&|"/code"|"/codeblock"]+									{fwrite(yytext,(yyleng*sizeof(char)),1,readme);}
 
-<FORMAT>[1-6][^\#]+\#[1-6]$        {(FUNCION CORRESPONDIENTE) BEGIN INITIAL;}	//titulos
-<FORMAT>[^\@]+\@ 								//negrita
-<FORMAT>[^\&]+\&								//cursiva
-<FORMAT>[^"/code"]"/code"							//codigo en linea
-<FORMAT>\n+[^"/codeblock"]\n+"/codeblock"					//codigo en bloque
+<FORMAT>[1-6][^\#]+\#[1-6]$        								{(FUNCION CORRESPONDIENTE) BEGIN INITIAL;}	//titulos
+<FORMAT>[^\@]+\@ 																	{(FUNCION CORRESPONDIENTE) BEGIN INITIAL}//negrita
+<FORMAT>[^\&]+\&																	{(FUNCION CORRESPONDIENTE) BEGIN INITIAL}//cursiva
+<FORMAT>[^"/code"]"/code"													{(FUNCION CORRESPONDIENTE) BEGIN INITIAL}//codigo en linea
+<FORMAT>\n+[^"/codeblock"]\n+"/codeblock"					{(FUNCION CORRESPONDIENTE) BEGIN INITIAL}//codigo en bloque
 
 
 %%
@@ -26,7 +28,15 @@ int main (int argc, char *argv[]) {
 			exit (-1);
 		}
 	}
+
+	readme = fopen("README.md");
 	else yyin = stdin;
 
+	yylex();
+
 	return 0;
+}
+
+void titulo(int alm){
+	readme
 }
