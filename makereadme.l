@@ -37,7 +37,7 @@ int main (int argc, char *argv[]) {
 	}
 	else yyin = stdin;
 
-	readme = fopen("Leeme.txt", "wt");
+	readme = fopen("README.md", "wt");
 	if(readme == NULL){
 		printf("El fichero no se ha podido crear\n");
 		exit(-1);

@@ -1,24 +1,25 @@
-# MD-Translator
-Un traductor de lenguaje a Markdown
+# MD-Translator 
+Un traductor de lenguaje a Markdown. **Este mismo README está traducido por el traductor.**
 
-##MC TOKENS LEX
+## How to use 
+Lo primero de todo es compilarlo. Para ello, tenemos que ejecutar estas líneas en terminal:
 
+```
+  lex makereadme.l
 
-###Titulos
-\#1 (texto)  \#1 -> Titulo principal
-\#(numero)  (text)  \#(numero)
+  gcc lex.yy.c -o <nombre que queramos poner al programa> -lfl
+```
 
+Cuando ya tenemos el programa compilado, lo ejecutamos de la siguiente manera:
 
-###Negrita
-@(texto)@
+```
+  <nombre del programa> <nombre del fichero a traducir>
+```
 
+## En que se centra 
 
-###Cursiva
-&(texto)&
+Este traductor se centra *única y exclusivamente* en los títulos, las negritas, las cursivas y los textos en código, los demás apartados son iguales que en Markdown.
 
+### Creadores 
 
-###Codigo
-/code ```(texto)``` /code -> linea de codigo
-
-
-/codeblock (parrafo) /codeblock -> bloque de codigo
+Este traductor lex ha sido creado por Alberto Gurrea Callejas y Jerónimo Chaves Caballero
