@@ -1,8 +1,12 @@
-%x FORMAT
+%x TITULO
+%x BLACK
+%x CURSIVA
+%x CODE
 
 			/*----- Sección de Declaraciones --------------*/
 %{
 #include <stdio.h>
+#include <stdlib.h>
 
 FILE * readme;
 int cont= 0;
@@ -10,14 +14,16 @@ int cont= 0;
 
 %%			/*----- Sección de Reglas ----------------*/
 
-\#|\@|\&|\%|\%\%													{BEGIN FORMAT;}
-[^\#|\@|\&|"/code"|"/block"]+											{printf("IT'S OK\n"); printf("IT'S OK\n");}
+\#																									{BEGIN TITULO;}
+\@																									{BEGIN BLACK;}
+\&																									{BEGIN CURSIVA;}
+\%																									{BEGIN CODE;}
+[^\#|\@|\&|\%]+																			{escribir();}
 
-<FORMAT>[1-6][^\#]+\#[1-6]$	      									{printf("IT'S OK\n"); printf("IT'S OK\n");BEGIN INITIAL;}
-<FORMAT>[^\@]+\@ 																		{printf("hey"); BEGIN INITIAL;}
-<FORMAT>[^\&]+\&																		{printf("hey"); BEGIN INITIAL;}
-<FORMAT>[^"/block"]+"/block"												{printf("hey"); BEGIN INITIAL;}
-<FORMAT>[^"/code"]+"/code"													{printf("hey"); BEGIN INITIAL;}
+<TITULO>[1-6][^\#]+\#[1-6]$	      									{char c; c= yytext[0]; titulo(c-48); BEGIN INITIAL;}
+<BLACK>[^\@]+\@ 																		{negrita(); BEGIN INITIAL;}
+<CURSIVA>[^\&]+\&																		{cursiva(); BEGIN INITIAL;}
+<CODE>[^\%]+\%																			{code(); BEGIN INITIAL;}
 
 %%
 			/*----- Sección de Procedimientos --------*/
@@ -55,22 +61,63 @@ void titulo(int alm){
 		cont++;
 	}
 
-	printf("IT'S OK\n");
 	cont = 1;
 	while(yytext[cont] != '#'){
 		fputc(yytext[cont], readme);
 		cont++;
 	}
-	printf("IT'S OK\n");
 }
 
 void escribir(){
 	cont = 0;
 
-	printf("IT'S OK\n");
-	while(yytext[cont]!= '/0'){
+	while(yytext[cont]!= '\0'){
 		fputc(yytext[cont], readme);
 		cont++;
 	}
-	printf("IT'S OK\n");
+}
+
+void negrita(){
+	cont = 0;
+
+	fputc('*', readme);
+	fputc('*', readme);
+
+	while(yytext[cont]!= '@'){
+		fputc(yytext[cont], readme);
+		cont++;
+	}
+
+	fputc('*', readme);
+	fputc('*', readme);
+}
+
+void cursiva(){
+	cont = 0;
+
+	fputc('*', readme);
+
+	while(yytext[cont]!= '&'){
+		fputc(yytext[cont], readme);
+		cont++;
+	}
+
+	fputc('*', readme);
+}
+
+void code(){
+	cont = 0;
+
+	fputc('`', readme);
+	fputc('`', readme);
+	fputc('`', readme);
+
+	while(yytext[cont]!= '%'){
+		fputc(yytext[cont], readme);
+		cont++;
+	}
+
+	fputc('`', readme);
+	fputc('`', readme);
+	fputc('`', readme);
 }
