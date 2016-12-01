@@ -19,4 +19,5 @@ Un traductor de lenguaje a Markdown
 
 ###Codigo
 /code (texto) /code -> linea de codigo
+
 /codeblock (parrafo) /codeblock -> bloque de codigo
