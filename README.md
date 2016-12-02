@@ -26,7 +26,7 @@ Como hemos dicho antes, hemos cambiado el formato de los títulos, de las negrit
 
   * Negrita
 
-    \@negrita\@
+    @negrita@
 
   * Cursiva
 
@@ -34,7 +34,7 @@ Como hemos dicho antes, hemos cambiado el formato de los títulos, de las negrit
 
   * Código
 
-    \%code\%
+    %code%
 
 ## Problemas
 
