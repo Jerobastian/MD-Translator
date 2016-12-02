@@ -30,7 +30,7 @@ Como hemos dicho antes, hemos cambiado el formato de los títulos, de las negrit
 
   * Cursiva
 
-    \&cursiva\&
+    &cursiva&
 
   * Código
 
