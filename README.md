@@ -44,6 +44,6 @@ Si en algún momento en el que se utiliza no aparecen ciertas líneas, revise su
 
 Este traductor se centra *única y exclusivamente* en los títulos, las negritas, las cursivas y los textos en código, los demás apartados son iguales que en Markdown.
 
-#3 Creadores
+### Creadores
 
 Este traductor lex ha sido creado por Alberto Gurrea Callejas y Jerónimo Chaves Caballero
