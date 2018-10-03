@@ -16,7 +16,7 @@ Cuando ya tenemos el programa compilado, lo ejecutamos de la siguiente manera:
   <nombre del programa> <nombre del fichero a traducir>
 ```
 
-##Formato
+## Formato
 
 Como hemos dicho antes, hemos cambiado el formato de los títulos, de las negritas, de las cursivas y de los textos en código. Os explicamos como escribir estos elementos en las siguientes lineas:
 
